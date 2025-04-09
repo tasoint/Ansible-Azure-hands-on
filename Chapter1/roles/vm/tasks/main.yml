@@ -1,0 +1,15 @@
+- name: Create virtual machine
+  azure.azcollection.azure_rm_virtualmachine:
+    resource_group: myResourceGroup
+    name: myVM
+    vm_size: Standard_B1s
+    location: eastus
+    image:
+      publisher: Canonical
+      offer: UbuntuServer
+      sku: 18.04-LTS
+      version: latest
+    admin_username: azureuser
+    admin_password: 'YourPassword123!'
+    network_interface_names:
+      - myNIC

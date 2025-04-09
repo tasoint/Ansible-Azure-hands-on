@@ -1,0 +1,8 @@
+- hosts: localhost
+  tasks:
+    - ansible.builtin.import_role:
+        name: resource_group
+    - ansible.builtin.import_role:
+        name: network
+    - ansible.builtin.import_role:
+        name: vm

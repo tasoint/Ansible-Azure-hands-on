@@ -1,0 +1,30 @@
+- name: Create virtual network
+  azure.azcollection.azure_rm_virtualnetwork:
+    name: myVNet
+    resource_group: myResourceGroup
+    location: eastus
+    address_prefixes:
+      - 10.0.0.0/16
+
+- name: Create subnet
+  azure.azcollection.azure_rm_subnet:
+    name: mySubnet
+    resource_group: myResourceGroup
+    virtual_network_name: myVNet
+    address_prefix: 10.0.1.0/24
+
+- name: Create public IP address
+  azure.azcollection.azure_rm_publicipaddress:
+    name: myPublicIP
+    resource_group: myResourceGroup
+    location: eastus
+    allocation_method: Dynamic
+
+- name: Create network interface card
+  azure.azcollection.azure_rm_networkinterface:
+    name: myNIC
+    resource_group: myResourceGroup
+    location: eastus
+    virtual_network_name: myVNet
+    subnet_name: mySubnet
+    public_ip_name: myPublicIP
